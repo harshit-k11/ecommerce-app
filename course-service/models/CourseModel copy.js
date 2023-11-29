@@ -1,43 +1,41 @@
 const pool = require('../services/DatabaseConnection')
-const Course = require('../interfaces/CourseRepository')
 
 
-class BaseModel extends Course {
-  constructor(courseId, courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseTranscript, courseStartDate, courseEndDate) {
-    super(courseId, courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseTranscript, courseStartDate, courseEndDate);
 
-  }
-
-    getDetails() {
-      return `Course: ${this.courseName}, Description: ${this.courseDescription}`;
-    }
-  
-    getPrice() {
-      return this.coursePrice;
+const Course = class {
+    constructor(courseId, courseName, courseUserId, coursePrice, courseDescription, courseAnswer, courseStatus, courseRating) {
+      this.courseId = courseId;
+      this.courseName = courseName;
+      this.courseUserId = courseUserId;
+      this.courseDescription = courseDescription;
+      this.courseAnswer = courseAnswer;
+      this.courseStatus = courseStatus;
+      this.coursePrice = coursePrice;
+      this.courseRating = courseRating;
     }
   
     // Create operation
-    static createCourse(courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseTranscript, courseStartDate, courseEndDate) {
-      //const course = new Course( courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseTranscript, courseStartDate, courseEndDate);
-  console.log("courseee");
+    static create(courseId, courseName, courseUserId, courseDescription, courseAnswer, courseStatus,coursePrice, courseRating) {
+      const course = new Course(courseId, courseName, courseUserId, courseDescription, courseAnswer, courseStatus, coursePrice, courseRating);
+  
     pool.getConnection((err, connection) => {
     if(err) throw err
     console.log('connected as id ' + connection.threadId)
-      const query = `INSERT INTO course (course_name,	course_description,	course_price,	course_teacherId,	course_transcript,	course_answers,	course_startDate,	course_endDate) VALUES ( ?, ?, ?, ?, ?, ?, ?,?)`;
-      const values = [ courseName, courseDescription, coursePrice, courseTeacherId, courseTranscript , courseAnswer, courseStartDate, courseEndDate];
-      console.log("q", values)
+      const query = `INSERT INTO courses (course_id, course_name, course_user_id, course_description, course_answer, course_status, course_rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+      const values = [course.courseId, course.courseName, course.courseUserId, course.courseDescription, course.courseAnswer, course.courseStatus,course.coursePrice, course.courseRating];
       connection.query(query, values, (error, result) => {
         if (error) {
           console.error(error);
           return;
         }
   
-        console.log(`Course created successfully`);
+        console.log(`Course created successfully: ${course.courseId}`);
       });
     })
 }
-
-    static getCourse(courseId) {
+  
+    // Read operation
+    static read(courseId) {
       // Connect to the database and execute the SELECT statement
       pool.getConnection((err, connection) => {
         if(err) throw err
@@ -69,9 +67,9 @@ class BaseModel extends Course {
       });
     }
 )}
-  /*
+  
     // Update operation
-    static updateCourse(courseId, courseName, courseUserId, courseDescription, courseAnswer, courseStatus, courseRating) {
+    static update(courseId, courseName, courseUserId, courseDescription, courseAnswer, courseStatus, courseRating) {
     pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
@@ -88,7 +86,7 @@ class BaseModel extends Course {
     })}
   
     // Delete operation
-    static deleteCourse(courseId) {
+    static delete(courseId) {
     pool.getConnection((err, connection) => {
     if(err) throw err
     console.log('connected as id ' + connection.threadId)
@@ -104,7 +102,7 @@ class BaseModel extends Course {
       });
     })}
 
-    static buyCourse(courseId) {
+    static buy(courseId) {
         pool.getConnection((err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
@@ -112,7 +110,6 @@ class BaseModel extends Course {
           const values = [courseId];
         })
     }
-    */
   };
 
-  module.exports = BaseModel;
+  module.exports = Course;
