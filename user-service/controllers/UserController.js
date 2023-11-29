@@ -7,11 +7,11 @@ const Student = require('../models/StudentModel');
 
 class UserController {
   static registerUser(req, res) {
-    const { username, password, userType, specificProperty } = req.body;
+    const { username, password, role, specificProperty } = req.body;
     console.log(req.body);
     let user;
 
-    switch (userType) {
+    switch (role) {
       case 'admin':
         user = new Admin(username, password, specificProperty);
         break;
@@ -25,11 +25,29 @@ class UserController {
         return res.status(400).json({ error: 'Invalid user type' });
     }
 
-    user.register();
+    user.register(req, res);
+  }
+// dropping the singleton pattern for login since we want diffrent instances 
+// of different user types to passed in various functionalities
+  static loginUser(req, res) {
+    const { username, password, role } = req.body;
+    let user;
 
-    // You might want to store user information in a database at this point
+    switch (role) {
+      case 'admin':
+        user = new Admin(username, password);
+        break;
+      case 'teacher':
+        user = new Teacher(username, password);
+        break;
+      case 'student':
+        user = new Student(username, password);
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid user type' });
+    }
 
-    res.status(200).json({ message: 'User registered successfully' });
+    user.login({ req, res });
   }
 }
 
