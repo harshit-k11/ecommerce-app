@@ -118,14 +118,7 @@ class BaseModel extends Course {
       });
     })}
     */
-    static buyCourse(courseId) {
-        pool.getConnection((err, connection) => {
-        if(err) throw err
-        console.log('connected as id ' + connection.threadId)
-          const query = `DELETE FROM courses WHERE course_id = ?`;
-          const values = [courseId];
-        })
-    }
+
     
   };
 
