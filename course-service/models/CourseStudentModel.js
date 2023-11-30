@@ -3,6 +3,9 @@ const ExtraHelpDecorator = require('../decorators/ExtraHelpDecorator')
 const TranscriptDecorator = require('../decorators/TranscriptDecorator')
 const AnswersDecorator = require('../decorators/AnswersDecorator')
 
+const NormalDiscountFactory = require('../factories/NormalDiscountFactory')
+const FestivalSaleDiscountFactory = require('../factories/FestivalSaleDiscountFactory')
+
 class CourseStudentModel {
   constructor(courseStudentIsExtraHelp,courseStudentIsTranscript,courseStudentIsAnswers,courseStudentStudentID,coursestudent_courseID) {
     this.courseStudentId = courseStudentId;
@@ -48,8 +51,27 @@ class CourseStudentModel {
       finalPrice =  transcriptAddedPrice + extraHelpAddedPrice + asnwersAddedPrice
       console.log("+++++++  finalPrice ++++++",finalPrice)
 
+      const festivalDiscountFactory = new FestivalSaleDiscountFactory();
+      const festivalDiscount = festivalDiscountFactory.applyDiscount()
+      console.log("+++++++  festivalDiscount ++++++",festivalDiscount)
 
-      
+      const normalDiscountFactory = new NormalDiscountFactory();
+      const normalDiscount = normalDiscountFactory.applyDiscount()
+      console.log("+++++++  normalDiscount ++++++",normalDiscount)
+
+      if(normalDiscount > festivalDiscount){
+      const finalDiscountByFactory = normalDiscount
+      }
+      else
+      {
+        const finalDiscountByFactory = festivalDiscount
+      }
+
+    // subcription discount
+
+    
+
+
 
 
 /*
