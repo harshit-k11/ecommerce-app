@@ -69,7 +69,27 @@ class CourseStudentModel {
 
     // subcription discount
 
-    
+
+    // create request
+
+    pool.getConnection((err, connection) => {
+        if(err) throw err
+        console.log('connected as id ' + connection.threadId)
+          const query = `INSERT INTO coursestudents (coursestudent_studentID, coursestudent_isAnswers, coursestudent_isTrasnscript, coursestudent_isExtraSupprot, coursestudent_courseID) VALUES (?, ?, ?, ?, ?)`;
+          const values = [ course.courseName, course.courseDescription, course.coursePrice, course.courseTeacherId, course.courseTranscript , course.courseAnswer, course.courseStartDate, course.courseEndDate];
+          //console.log("q", values)
+          //console.log("q*********************Q")
+          connection.query(query, values, (error, result) => {
+            if (error) {
+              console.error(error);
+              return;
+            }
+            console.log(`Course created successfully`);
+          })})
+
+
+
+
 
 
 
