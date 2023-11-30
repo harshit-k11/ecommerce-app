@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const pool = require('../services/DatabaseConnection')
+const { EmailMessageHandler } = require('../services/emailMessageHandler');
 
 class User {
     constructor(username, password) {
@@ -34,7 +35,11 @@ class User {
             // Send error response to the caller
             return res.status(500).json({ error: 'Error registering user' });
           }
-  
+            // Send success response to the caller
+                 //registration succeeds, send a welcome email
+                 const welcomeMessage = `Welcome to our platform, ${this.username}!`;
+                 EmailMessageHandler.getInstance().sendWelcomeEmail(req.body.email, welcomeMessage);
+               
           // Send success response to the caller
           res.status(200).json({ message: `Registration Successful.` });
         });
