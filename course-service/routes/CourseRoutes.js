@@ -6,5 +6,6 @@ const courseController = require('../controllers/CourseController');
 
 // Define the user registration route
 router.post('/create', courseController.createcourse);
+router.post('/buy', courseController.buycourse);
 
 module.exports = router;

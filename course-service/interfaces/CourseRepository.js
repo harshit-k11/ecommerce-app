@@ -19,7 +19,7 @@ class Course {
     }
   
     getPrice() {
-      return 0;
+      return this.coursePrice;
     }
 
     createCourse(){

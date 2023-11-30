@@ -118,6 +118,7 @@ class BaseModel extends Course {
       });
     })}
     */
+
     static buyCourse(courseId) {
         pool.getConnection((err, connection) => {
         if(err) throw err
