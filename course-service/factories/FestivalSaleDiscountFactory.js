@@ -10,7 +10,7 @@ class FestivalSaleDiscountFactory extends Discount {
   
     applyDiscount() {
         if(this.statusFestivalSaleDiscountFactory){
-            return discountPercentage;
+            return this.discountPercentage;
         }
         else{
             return 0;

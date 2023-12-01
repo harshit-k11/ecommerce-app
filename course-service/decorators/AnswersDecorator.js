@@ -3,9 +3,9 @@ const CourseBuilder = require('../builder/CourseBuilder')
 
 class AnswersDecorator extends Course {
     constructor(baseCourse, isAnswerSelected) {
-      super(baseCourse.course_name, baseCourse.course_teacherId, baseCourse.course_price, baseCourse.course_description, baseCourse.course_answers, baseCourse.courseStatus, baseCourse.course_rating, baseCourse.course_transcript, baseCourse.course_startDate, baseCourse.course_endDate);
-      this.courseId= baseCourse.course_id
-      this.courseStatus = baseCourse.course_status
+      super(baseCourse.courseName, baseCourse.courseTeacherId, baseCourse.coursePrice, baseCourse.courseDescription, baseCourse.courseAnswer, baseCourse.courseStatus, baseCourse.courseRating, baseCourse.courseTranscript, baseCourse.courseStartDate, baseCourse.courseEndDate);
+      this.courseId= baseCourse.courseId
+      this.courseStatus = baseCourse.courseStatus   
 
       this.isAnswerSelected = isAnswerSelected;
       console.log("hiii from TranscriptDecorator",typeof(baseCourse),baseCourse.course_id)
@@ -13,12 +13,11 @@ class AnswersDecorator extends Course {
   
     getPrice() {
       if (this.isAnswerSelected) {
-        //this.coursePrice = baseCourse.course_price * 1.25
-        return  20 ; // Increase price by 25%
+        this.coursePrice = this.coursePrice + 20
+        return  this.coursePrice; // Increase price by 25%
       } else {
-       // this.coursePrice = baseCourse.course_price * 1.25
-        //return super.getPrice();
-        return 0
+        
+        return  this.coursePrice; // Increase price by 25%
       }
     }
   }

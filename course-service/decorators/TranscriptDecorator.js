@@ -13,12 +13,11 @@ class TranscriptDecorator extends Course {
   
     getPrice() {
       if (this.isTranscriptelected) {
-        //this.coursePrice = baseCourse.course_price * 1.25
-        return  10 ; // Increase price by 25%
+        this.coursePrice = this.coursePrice + 10
+        return  this.coursePrice; 
       } else {
-       // this.coursePrice = baseCourse.course_price * 1.25
-        //return super.getPrice();
-        return 0
+        
+        return  this.coursePrice; 
       }
     }
   }

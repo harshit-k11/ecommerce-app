@@ -32,25 +32,25 @@ class CourseStudentModel {
       }
 
       console.log("+++++++ result ++++++",result)
+
+      // decorator Pattern
       const TranscriptDecoratoredCourse = new TranscriptDecorator(result[0], courseStudentIsTranscript);
       console.log("+++++++ TranscriptDecoratoredCourse ++++++",TranscriptDecoratoredCourse)
-      const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
-      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",transcriptAddedPrice)
+      //const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
+      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",TranscriptDecoratoredCourse)
 
-      const extraHelpDecoratoredCourse = new ExtraHelpDecorator(result[0], courseStudentIsExtraHelp);
+      const extraHelpDecoratoredCourse = new ExtraHelpDecorator(TranscriptDecoratoredCourse, courseStudentIsExtraHelp);
       console.log("+++++++ extraHelpDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
-      const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
+      //const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
       console.log("+++++++ extraHelpDecoratoredCourse extraHelpAddedPrice ++++++",extraHelpAddedPrice)
 
-      const AnswersDecoratoredCourse = new AnswersDecorator(result[0], courseStudentIsAnswers);
+      const AnswersDecoratoredCourse = new AnswersDecorator(extraHelpDecoratoredCourse, courseStudentIsAnswers);
       console.log("+++++++ AnswersDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
       const asnwersAddedPrice = AnswersDecoratoredCourse.getPrice();
       console.log("+++++++ AnswersDecoratoredCourse finalPrice ++++++",asnwersAddedPrice)
 
-      var finalPrice = 0
-      finalPrice =  transcriptAddedPrice + extraHelpAddedPrice + asnwersAddedPrice
-      console.log("+++++++  finalPrice ++++++",finalPrice)
-
+      
+      
       const festivalDiscountFactory = new FestivalSaleDiscountFactory();
       const festivalDiscount = festivalDiscountFactory.applyDiscount()
       console.log("+++++++  festivalDiscount ++++++",festivalDiscount)
@@ -66,26 +66,31 @@ class CourseStudentModel {
       {
         const finalDiscountByFactory = festivalDiscount
       }
-
+      
     // subcription discount
 
 
     // create request
 
-    pool.getConnection((err, connection) => {
+    pool.getConnection(async (err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
           const query = `INSERT INTO coursestudents (coursestudent_studentID, coursestudent_isAnswers, coursestudent_isTrasnscript, coursestudent_isExtraSupprot, coursestudent_courseID) VALUES (?, ?, ?, ?, ?)`;
-          const values = [ course.courseName, course.courseDescription, course.coursePrice, course.courseTeacherId, course.courseTranscript , course.courseAnswer, course.courseStartDate, course.courseEndDate];
+        //   const values = [ course.courseName, course.courseDescription, course.coursePrice, course.courseTeacherId, course.courseTranscript , course.courseAnswer, course.courseStartDate, course.courseEndDate];
+          
           //console.log("q", values)
           //console.log("q*********************Q")
-          connection.query(query, values, (error, result) => {
-            if (error) {
-              console.error(error);
-              return;
-            }
-            console.log(`Course created successfully`);
-          })})
+          const result = await connection.query(query, values).toArray()
+          if(result?.error) {
+            //handle error
+          }
+        //   , (error, result) => {
+        //     if (error) {
+        //       console.error(error);
+        //       return;
+        //     }
+        //     console.log(`Course created successfully`);
+           })
 
 
 
