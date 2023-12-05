@@ -1,0 +1,235 @@
+
+D:\ecommerce-app\user-service\app.js
+   1:1   error  Too many blank lines at the beginning of file. Max of 0 allowed  no-multiple-empty-lines
+   2:35  error  Extra semicolon                                                  semi
+   3:42  error  Extra semicolon                                                  semi
+   4:50  error  Extra semicolon                                                  semi
+   6:22  error  Extra semicolon                                                  semi
+   7:18  error  Extra semicolon                                                  semi
+   9:27  error  Extra semicolon                                                  semi
+  12:29  error  Extra semicolon                                                  semi
+  15:51  error  Extra semicolon                                                  semi
+  16:3   error  Extra semicolon                                                  semi
+  18:12  error  A space is required after ','                                    comma-spacing
+  18:17  error  A space is required after ','                                    comma-spacing
+  18:21  error  Missing space before =>                                          arrow-spacing
+  18:24  error  Missing space after =>                                           arrow-spacing
+  19:1   error  Expected indentation of 2 spaces but found 4                     indent
+  19:14  error  Strings must use singlequote                                     quotes
+
+D:\ecommerce-app\user-service\controllers\UserController.js
+   1:1   error  Trailing spaces not allowed                                      no-trailing-spaces
+   1:1   error  Too many blank lines at the beginning of file. Max of 0 allowed  no-multiple-empty-lines
+   4:46  error  Extra semicolon                                                  semi
+   5:50  error  Extra semicolon                                                  semi
+   6:50  error  Extra semicolon                                                  semi
+   9:22  error  Missing space before function parentheses                        space-before-function-paren
+  10:68  error  Extra semicolon                                                  semi
+  11:26  error  Extra semicolon                                                  semi
+  12:13  error  Extra semicolon                                                  semi
+  16:63  error  Extra semicolon                                                  semi
+  17:14  error  Extra semicolon                                                  semi
+  19:65  error  Extra semicolon                                                  semi
+  20:14  error  Extra semicolon                                                  semi
+  22:65  error  Extra semicolon                                                  semi
+  23:14  error  Extra semicolon                                                  semi
+  25:68  error  Extra semicolon                                                  semi
+  28:28  error  Extra semicolon                                                  semi
+  31:19  error  Missing space before function parentheses                        space-before-function-paren
+  32:50  error  Extra semicolon                                                  semi
+  33:13  error  Extra semicolon                                                  semi
+  37:45  error  Extra semicolon                                                  semi
+  38:14  error  Extra semicolon                                                  semi
+  40:47  error  Extra semicolon                                                  semi
+  41:14  error  Extra semicolon                                                  semi
+  43:47  error  Extra semicolon                                                  semi
+  44:14  error  Extra semicolon                                                  semi
+  46:68  error  Extra semicolon                                                  semi
+  49:29  error  Extra semicolon                                                  semi
+  53:32  error  Extra semicolon                                                  semi
+
+D:\ecommerce-app\user-service\interfaces\UserRepository.js
+  1:1  error  Trailing spaces not allowed                                      no-trailing-spaces
+  1:1  error  Too many blank lines at the beginning of file. Max of 0 allowed  no-multiple-empty-lines
+
+D:\ecommerce-app\user-service\models\AdminModel.js
+   1:36  error  Extra semicolon                            semi
+   4:14  error  Missing space before function parentheses  space-before-function-paren
+   5:30  error  Extra semicolon                            semi
+   6:55  error  Extra semicolon                            semi
+  12:23  error  Extra semicolon                            semi
+
+D:\ecommerce-app\user-service\models\StudentModel.js
+   1:36  error  Extra semicolon                            semi
+   4:14  error  Missing space before function parentheses  space-before-function-paren
+   5:30  error  Extra semicolon                            semi
+   6:59  error  Extra semicolon                            semi
+  12:25  error  Extra semicolon                            semi
+
+D:\ecommerce-app\user-service\models\TeacherModel.js
+   1:36  error  Extra semicolon                                semi
+   4:14  error  Missing space before function parentheses      space-before-function-paren
+   5:30  error  Extra semicolon                                semi
+   6:59  error  Extra semicolon                                semi
+  12:25  error  Extra semicolon                                semi
+  12:26  error  Newline required at end of file but not found  eol-last
+
+D:\ecommerce-app\user-service\models\UserModel.js
+   1:33  error  Extra semicolon                                            semi
+   5:1   error  Expected indentation of 2 spaces but found 4               indent
+   5:16  error  Missing space before function parentheses                  space-before-function-paren
+   6:1   error  Expected indentation of 4 spaces but found 6               indent
+   6:31  error  Extra semicolon                                            semi
+   7:1   error  Expected indentation of 4 spaces but found 6               indent
+   7:31  error  Extra semicolon                                            semi
+   8:1   error  Expected indentation of 2 spaces but found 4               indent
+   9:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  10:1   error  Expected indentation of 2 spaces but found 4               indent
+  10:19  error  Missing space before function parentheses                  space-before-function-paren
+  11:1   error  Expected indentation of 4 spaces but found 6               indent
+  12:1   error  Expected indentation of 6 spaces but found 8               indent
+  13:1   error  Expected indentation of 8 spaces but found 10              indent
+  14:1   error  Expected indentation of 8 spaces but found 10              indent
+  14:91  error  Extra semicolon                                            semi
+  15:1   error  Expected indentation of 6 spaces but found 8               indent
+  16:1   error  Expected indentation of 6 spaces but found 8               indent
+  16:68  error  Extra semicolon                                            semi
+  17:1   error  Expected indentation of 6 spaces but found 8               indent
+  18:1   error  Expected indentation of 8 spaces but found 10              indent
+  19:1   error  Expected indentation of 8 spaces but found 10              indent
+  20:1   error  Expected indentation of 8 spaces but found 10              indent
+  21:1   error  Expected indentation of 8 spaces but found 10              indent
+  22:1   error  Expected indentation of 8 spaces but found 10              indent
+  23:1   error  Expected indentation of 6 spaces but found 8               indent
+  23:10  error  Extra semicolon                                            semi
+  24:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  25:1   error  Expected indentation of 6 spaces but found 8               indent
+  26:1   error  Expected indentation of 6 spaces but found 8               indent
+  27:1   error  Expected indentation of 8 spaces but found 10              indent
+  27:62  error  Extra semicolon                                            semi
+  28:1   error  Expected indentation of 6 spaces but found 8               indent
+  29:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  30:1   error  Expected indentation of 6 spaces but found 8               indent
+  31:1   error  Expected indentation of 8 spaces but found 10              indent
+  31:31  error  Extra semicolon                                            semi
+  32:1   error  Expected indentation of 8 spaces but found 10              indent
+  33:1   error  Expected indentation of 10 spaces but found 12             indent
+  33:29  error  Extra semicolon                                            semi
+  34:1   error  Expected indentation of 10 spaces but found 12             indent
+  35:1   error  Expected indentation of 10 spaces but found 12             indent
+  35:77  error  Extra semicolon                                            semi
+  36:1   error  Expected indentation of 8 spaces but found 10              indent
+  37:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  38:1   error  Expected indentation of 8 spaces but found 10              indent
+  39:1   error  Expected indentation of 8 spaces but found 10              indent
+  39:43  error  Strings must use singlequote                               quotes
+  39:72  error  Extra semicolon                                            semi
+  40:1   error  Expected indentation of 6 spaces but found 8               indent
+  40:11  error  Extra semicolon                                            semi
+  41:1   error  Expected indentation of 4 spaces but found 6               indent
+  41:9   error  Extra semicolon                                            semi
+  42:1   error  Expected indentation of 2 spaces but found 4               indent
+  44:1   error  Expected indentation of 2 spaces but found 4               indent
+  44:16  error  Missing space before function parentheses                  space-before-function-paren
+  45:1   error  Expected indentation of 4 spaces but found 6               indent
+  45:15  error  'req' is assigned a value but never used                   no-unused-vars
+  45:36  error  Extra semicolon                                            semi
+  46:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  47:1   error  Expected indentation of 4 spaces but found 6               indent
+  48:1   error  Expected indentation of 6 spaces but found 8               indent
+  49:1   error  Expected indentation of 8 spaces but found 10              indent
+  50:1   error  Expected indentation of 10 spaces but found 12             indent
+  51:1   error  Expected indentation of 10 spaces but found 12             indent
+  51:93  error  Extra semicolon                                            semi
+  52:1   error  Expected indentation of 8 spaces but found 10              indent
+  53:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  54:1   error  Expected indentation of 8 spaces but found 10              indent
+  55:1   error  Expected indentation of 10 spaces but found 12             indent
+  56:1   error  Expected indentation of 10 spaces but found 12             indent
+  57:1   error  Expected indentation of 10 spaces but found 12             indent
+  58:1   error  Expected indentation of 12 spaces but found 14             indent
+  58:35  error  Extra semicolon                                            semi
+  59:1   error  Expected indentation of 12 spaces but found 14             indent
+  60:1   error  Expected indentation of 14 spaces but found 16             indent
+  60:35  error  Extra semicolon                                            semi
+  61:1   error  Expected indentation of 14 spaces but found 16             indent
+  62:1   error  Expected indentation of 14 spaces but found 16             indent
+  62:96  error  Extra semicolon                                            semi
+  63:1   error  Expected indentation of 12 spaces but found 14             indent
+  64:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  65:1   error  Expected indentation of 12 spaces but found 14             indent
+  66:1   error  Expected indentation of 14 spaces but found 16             indent
+  66:56  error  Extra semicolon                                            semi
+  67:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  68:1   error  Expected indentation of 14 spaces but found 16             indent
+  69:1   error  Expected indentation of 14 spaces but found 16             indent
+  69:90  error  Extra semicolon                                            semi
+  70:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  71:1   error  Expected indentation of 14 spaces but found 16             indent
+  72:1   error  Expected indentation of 16 spaces but found 18             indent
+  73:1   error  Expected indentation of 16 spaces but found 18             indent
+  73:73  error  Extra semicolon                                            semi
+  74:1   error  Expected indentation of 14 spaces but found 16             indent
+  75:1   error  Expected indentation of 16 spaces but found 18             indent
+  76:1   error  Expected indentation of 16 spaces but found 18             indent
+  76:83  error  Extra semicolon                                            semi
+  77:1   error  Expected indentation of 14 spaces but found 16             indent
+  78:1   error  Expected indentation of 12 spaces but found 14             indent
+  79:1   error  Expected indentation of 14 spaces but found 16             indent
+  80:1   error  Expected indentation of 14 spaces but found 16             indent
+  80:81  error  Extra semicolon                                            semi
+  81:1   error  Expected indentation of 12 spaces but found 14             indent
+  82:1   error  Expected indentation of 10 spaces but found 12             indent
+  83:1   error  Expected indentation of 8 spaces but found 10              indent
+  83:12  error  Extra semicolon                                            semi
+  84:1   error  Expected indentation of 6 spaces but found 8               indent
+  84:11  error  Extra semicolon                                            semi
+  85:1   error  Expected indentation of 4 spaces but found 6               indent
+  86:1   error  Expected indentation of 6 spaces but found 8               indent
+  86:29  error  Extra semicolon                                            semi
+  87:1   error  Expected indentation of 6 spaces but found 8               indent
+  88:1   error  Expected indentation of 6 spaces but found 8               indent
+  88:81  error  Extra semicolon                                            semi
+  89:1   error  Expected indentation of 4 spaces but found 6               indent
+  90:1   error  Expected indentation of 2 spaces but found 4               indent
+  91:1   error  Expected indentation of 0 spaces but found 2               indent
+  91:4   error  Trailing spaces not allowed                                no-trailing-spaces
+  92:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  93:1   error  Expected indentation of 0 spaces but found 2               indent
+  93:24  error  Extra semicolon                                            semi
+  94:1   error  Trailing spaces not allowed                                no-trailing-spaces
+  94:1   error  Too many blank lines at the end of file. Max of 0 allowed  no-multiple-empty-lines
+  94:3   error  Newline required at end of file but not found              eol-last
+
+D:\ecommerce-app\user-service\routes\UserRoutes.js
+  1:35  error  Extra semicolon  semi
+  2:32  error  Extra semicolon  semi
+  3:64  error  Extra semicolon  semi
+  6:48  error  Extra semicolon  semi
+  7:54  error  Extra semicolon  semi
+  9:24  error  Extra semicolon  semi
+
+D:\ecommerce-app\user-service\services\DatabaseConnection.js
+   3:11  error  Multiple spaces found before '='               no-multi-spaces
+   4:1   error  Expected indentation of 2 spaces but found 4   indent
+   4:20  error  Extra space after key 'connectionLimit'        key-spacing
+   5:1   error  Expected indentation of 2 spaces but found 4   indent
+   5:9   error  Extra space after key 'host'                   key-spacing
+   6:1   error  Expected indentation of 2 spaces but found 4   indent
+   6:9   error  Extra space after key 'user'                   key-spacing
+   7:1   error  Expected indentation of 2 spaces but found 4   indent
+   7:13  error  Extra space after key 'password'               key-spacing
+   8:1   error  Expected indentation of 2 spaces but found 4   indent
+   8:13  error  Extra space after key 'database'               key-spacing
+  10:1   error  Trailing spaces not allowed                    no-trailing-spaces
+  11:22  error  Extra semicolon                                semi
+  11:23  error  Trailing spaces not allowed                    no-trailing-spaces
+  11:24  error  Newline required at end of file but not found  eol-last
+
+D:\ecommerce-app\user-service\services\UserService.js
+  1:1  error  Trailing spaces not allowed                                      no-trailing-spaces
+  1:1  error  Too many blank lines at the beginning of file. Max of 0 allowed  no-multiple-empty-lines
+
+✖ 211 problems (211 errors, 0 warnings)
+  210 errors and 0 warnings potentially fixable with the `--fix` option.
+

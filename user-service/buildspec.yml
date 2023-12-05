@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - cd user-service
+      - npm install
+  build:
+    commands:
+      - npm run build
+artifacts:
+  files:
+    - user-service/**
+  discard-paths: yes
+
+# Deploy to Lambda function
+deploy:
+  provider: Lambda
+  function-name: curio-mind_dev
+  region: us-east-1
+  role: arn:aws:lambda:us-east-1:5765865890:function:curio-mind_dev
+  runtime: nodejs16.x
+  timeout: 30
+  handler: user-service/lambda.handler
+  zip: ./package.zip
