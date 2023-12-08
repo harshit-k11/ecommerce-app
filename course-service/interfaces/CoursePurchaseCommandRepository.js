@@ -1,6 +1,3 @@
-// PurchaseCommand.js
-
-
 // behavioral design pattern --> command pattern
 class CoursePurchaseCommandRepository {
   constructor(){

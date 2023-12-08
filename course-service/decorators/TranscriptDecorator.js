@@ -8,7 +8,6 @@ class TranscriptDecorator extends Course {
       this.courseStatus = baseCourse.course_status
 
       this.isTranscriptelected = isTranscriptelected;
-      console.log("hiii from TranscriptDecorator",typeof(baseCourse),baseCourse.course_id)
     }
   
     getPrice() {
