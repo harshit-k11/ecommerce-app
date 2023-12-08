@@ -11,8 +11,6 @@ class ExtraHelpDecorator extends Course {
   
     getPrice() {
       if (this.isExtraHelpSelected) {
-        //return super.getPrice() + 25; // Increase price by 25%
-        //return 25
         this.coursePrice = this.coursePrice + 25
         return  this.coursePrice; // Increase price by 25%
       } else {

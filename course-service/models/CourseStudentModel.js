@@ -5,7 +5,6 @@ const AnswersDecorator = require('../decorators/AnswersDecorator')
 
 const FactoryDiscount = require('../factories/FactoryDiscount')
 
-const CourseBuilder = require('../builder/CourseBuilder')
 
 class CourseStudentModel {
   constructor(courseStudentIsExtraHelp,courseStudentIsTranscript,courseStudentIsAnswers,courseStudentStudentID,coursestudent_courseID) {
@@ -45,94 +44,59 @@ class CourseStudentModel {
       //console.log("+++++++ extraHelpDecoratoredCourse extraHelpAddedPrice ++++++",extraHelpAddedPrice)
 
       const AnswersDecoratoredCourse = new AnswersDecorator(extraHelpDecoratoredCourse, courseStudentIsAnswers);
-      console.log("+++++++ AnswersDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
+      console.log("+++++++ AnswersDecoratoredCourse ++++++",AnswersDecoratoredCourse)
       const asnwersAddedPrice = AnswersDecoratoredCourse.getPrice();
       console.log("+++++++ AnswersDecoratoredCourse finalPrice --------------------++++++",asnwersAddedPrice)
 
-
-      // builder pattern
-      /*
-      const courseBuilder = new CourseBuilder();
-      const course = courseBuilder.withCourseName(AnswersDecoratoredCourse.courseName)
-      courseBuilder.withCourseTeacherId(AnswersDecoratoredCourse.courseTeacherId)
-      courseBuilder.withCoursePrice(AnswersDecoratoredCourse.coursePrice)
-      courseBuilder.withCourseDescription(AnswersDecoratoredCourse.courseDescription)
-      courseBuilder.withCourseAnswer(AnswersDecoratoredCourse.courseAnswer)
-      courseBuilder.withCourseTranscript(AnswersDecoratoredCourse.courseTranscript)
-      courseBuilder.withCourseStartDate(AnswersDecoratoredCourse.courseStartDate)
-      courseBuilder.withCourseEndDate(AnswersDecoratoredCourse.courseEndDate)
-      courseBuilder.build();
-
-      console.log("+++++++ course --------------------++++++",course)
-      */
-      
       // creational design pattern ---> Factory Method 
-      /*
-      const festivalDiscountFactory = new FestivalSaleDiscountFactory();
-      const festivalDiscount = festivalDiscountFactory.applyDiscount()
-      console.log("+++++++  festivalDiscount ++++++",festivalDiscount)
-
-      const normalDiscountFactory = new NormalDiscountFactory();
-      const normalDiscount = normalDiscountFactory.applyDiscount()
-      console.log("+++++++  normalDiscount ++++++",normalDiscount)
-
-      if(normalDiscount > festivalDiscount){
-      const finalDiscountByFactory = normalDiscount
-      }
-      else
-      {
-        const finalDiscountByFactory = festivalDiscount
-      }
-      */
-      
-    // subcription discount
-    // behavioral design pattern ---> State Pattern 
-
       const factoryDiscount = new FactoryDiscount()
       const discountType = "Festival"
       const factoryDiscountPercentage = factoryDiscount.createDiscount(discountType)
       console.log("+++++++ factoryDiscountPercentage  ++++++",factoryDiscountPercentage)
+      
+    // subcription discount
+    const query = `SELECT * FROM user_details WHERE id = ?`;
+    const values = [courseStudentStudentID];
 
-    // create request
-    /*
-    pool.getConnection(async (err, connection) => {
-        if(err) throw err
-        console.log('connected as id ' + connection.threadId)
-          const query = `INSERT INTO coursestudents (coursestudent_studentID, coursestudent_isAnswers, coursestudent_isTrasnscript, coursestudent_isExtraSupprot, coursestudent_courseID) VALUES (?, ?, ?, ?, ?)`;
-        //   const values = [ course.courseName, course.courseDescription, course.coursePrice, course.courseTeacherId, course.courseTranscript , course.courseAnswer, course.courseStartDate, course.courseEndDate];
-          
-          //console.log("q", values)
-          //console.log("q*********************Q")
-          const result = await connection.query(query, values).toArray()
-          if(result?.error) {
-            //handle error
-          }
-        //   , (error, result) => {
-        //     if (error) {
-        //       console.error(error);
-        //       return;
-        //     }
-        //     console.log(`Course created successfully`);
-           })
+    connection.query(query, values, (error, user_result) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      
+      console.log("+++++++ user_result  ++++++",user_result[0].specificProperty, courseStudentStudentID)
+      
+      // subcription discount
+      var  subcriptionDiscountPercentage = 0
+      if(user_result[0].specificProperty == "gold")
+      {
+        subcriptionDiscountPercentage = 20
+      }
+      else if(user_result[0].specificProperty == "silver"){
+        subcriptionDiscountPercentage = 10
+      }
+      else{
+        subcriptionDiscountPercentage = 0
+      }
+      
+      const price = asnwersAddedPrice - (subcriptionDiscountPercentage + factoryDiscountPercentage.discountPercentage) * asnwersAddedPrice / 100
 
+      console.log("price ----------->",price,asnwersAddedPrice, subcriptionDiscountPercentage, factoryDiscountPercentage.discountPercentage )
 
-           // behavioral design pattern ---> Observer Pattern
-           // Email serveice
+      // create 
 
+    const query = `INSERT INTO coursestudents(coursestudent_studentID, coursestudent_isAnswers, coursestudent_isTrasnscript, coursestudent_isExtraSupprot, coursestudent_courseID) VALUES (?,?,?,?,?)`;
+    const values = [courseStudentStudentID,courseStudentIsAnswers,courseStudentIsTranscript,courseStudentIsExtraHelp,coursestudent_courseID];
 
-
-
-
-
-      const extraHelpDecoratoredCourse = new ExtraHelpDecorator(TranscriptDecoratoredCourse, courseStudentIsTranscript);
-      console.log("+++++++ TranscriptDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
-      const finalPrice = extraHelpDecoratoredCourse.getPrice();
-      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",finalPrice)
-
-      const decoratedCourse = new TranscriptDecorator(new ExtraHelpDecorator(result[0], courseStudentIsExtraHelp), courseStudentIsTranscript);
-      const finalPrice2 = decoratedCourse.getPrice();
-      console.log("+++++++ TranscriptDecoratoredCourse finalPrice2  ++++++",finalPrice2) */
-
+    connection.query(query, values, (error, course_result) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+      console.log("course_result  ---> ",course_result)
+    }) 
+    }
+    )
 
     })})
 }

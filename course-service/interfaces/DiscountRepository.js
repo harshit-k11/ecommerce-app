@@ -2,8 +2,6 @@
 // Interface class
 class Discount {
     constructor() {
-       
-        
    }
   // abstract class
    applyDiscount(){
