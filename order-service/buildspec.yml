@@ -23,5 +23,5 @@ deploy:
   role: arn:aws:lambda:us-east-1:5765865890:function:curio-mind_dev
   runtime: nodejs16.x
   timeout: 30
-  handler: user-service/lambda.handler
+  handler: order-service/lambda.handler
   zip: ./package.zip
