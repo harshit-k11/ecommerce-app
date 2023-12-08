@@ -1,5 +1,5 @@
 class Course {
-    constructor(courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseStatus, courseRating, courseTranscript, courseStartDate, courseEndDate) {
+     constructor(courseName, courseTeacherId, coursePrice, courseDescription, courseAnswer, courseStatus, courseRating, courseTranscript, courseStartDate, courseEndDate) {
        
         this.courseName = courseName;
         this.courseTeacherId = courseTeacherId;
