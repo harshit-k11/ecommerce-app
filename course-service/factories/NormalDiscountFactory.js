@@ -3,8 +3,9 @@ const Discount = require('../interfaces/DiscountRepository')
 
 class NormalDiscountFactory extends Discount {
     constructor( ) {
-        this.discountPercentage = 5
-        this.statusNormalDiscountFactory=true
+      super()
+      this.discountPercentage = 5
+      this.statusNormalDiscountFactory=true
     }
   
     applyDiscount() {
