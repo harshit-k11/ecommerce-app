@@ -8,7 +8,8 @@ class CourseBuilder {
     this.coursePrice = null;
     this.courseDescription = null;
     this.courseAnswer = null;
-    this.courseStatus = 1; // Default courseStatus to 1
+    this.courseStatus = 1; 
+    // Default courseStatus to 1
     this.courseRating = null;
     this.courseTranscript = null;
     this.courseStartDate = null;

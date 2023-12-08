@@ -48,8 +48,6 @@ class CourseStudentModel {
       const asnwersAddedPrice = AnswersDecoratoredCourse.getPrice();
       console.log("+++++++ AnswersDecoratoredCourse finalPrice --------------------++++++",asnwersAddedPrice)
 
-
-      
       // creational design pattern ---> Factory Method 
       const factoryDiscount = new FactoryDiscount()
       const discountType = "Festival"
@@ -57,8 +55,6 @@ class CourseStudentModel {
       console.log("+++++++ factoryDiscountPercentage  ++++++",factoryDiscountPercentage)
       
     // subcription discount
-
-
     const query = `SELECT * FROM user_details WHERE id = ?`;
     const values = [courseStudentStudentID];
 
@@ -83,14 +79,9 @@ class CourseStudentModel {
         subcriptionDiscountPercentage = 0
       }
       
-      
-      
       const price = asnwersAddedPrice - (subcriptionDiscountPercentage + factoryDiscountPercentage.discountPercentage) * asnwersAddedPrice / 100
 
       console.log("price ----------->",price,asnwersAddedPrice, subcriptionDiscountPercentage, factoryDiscountPercentage.discountPercentage )
-
-
-
 
       // create 
 
@@ -103,19 +94,9 @@ class CourseStudentModel {
         return;
       }
       console.log("course_result  ---> ",course_result)
-    })
-
-
-      
+    }) 
     }
     )
-
-
-
-    // create request
-    
-    
-
 
     })})
 }

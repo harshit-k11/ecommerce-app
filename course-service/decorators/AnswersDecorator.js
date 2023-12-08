@@ -1,7 +1,6 @@
 const Course = require('../interfaces/CourseRepository')
 //Decorator is a structural design pattern
 
-
 class AnswersDecorator extends Course {
     constructor(baseCourse, isAnswerSelected) {
       super(baseCourse.courseName, baseCourse.courseTeacherId, baseCourse.coursePrice, baseCourse.courseDescription, baseCourse.courseAnswer, baseCourse.courseStatus, baseCourse.courseRating, baseCourse.courseTranscript, baseCourse.courseStartDate, baseCourse.courseEndDate);

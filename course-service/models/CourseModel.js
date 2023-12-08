@@ -31,7 +31,6 @@ class BaseModel extends Course {
       courseBuilder.withCourseEndDate(courseEndDate)
       courseBuilder.build();
     
-
     //console.log("courseee", course);
     pool.getConnection((err, connection) => {
     if(err) throw err
@@ -83,41 +82,6 @@ class BaseModel extends Course {
       });
     }
 )}
-  /*
-    // Update operation
-    static updateCourse(courseId, courseName, courseUserId, courseDescription, courseAnswer, courseStatus, courseRating) {
-    pool.getConnection((err, connection) => {
-        if(err) throw err
-        console.log('connected as id ' + connection.threadId)
-      const query = `UPDATE courses SET course_name = ?, course_user_id = ?, course_description = ?, course_answer = ?, course_status = ?, course_rating = ?, course_price = ? WHERE course_id = ?`;
-      const values = [courseName, courseUserId, courseDescription, courseAnswer, courseStatus, courseRating, courseId, coursePrice];
-      connection.query(query, values, (error, result) => {
-        if (error) {
-          console.error(error);
-          return;
-        }
-  
-        console.log(`Course updated successfully: ${courseId}`);
-      });
-    })}
-  
-    // Delete operation
-    static deleteCourse(courseId) {
-    pool.getConnection((err, connection) => {
-    if(err) throw err
-    console.log('connected as id ' + connection.threadId)
-      const query = `DELETE FROM courses WHERE course_id = ?`;
-      const values = [courseId];
-      connection.query(query, values, (error, result) => {
-        if (error) {
-          console.error(error);
-          return;
-        }
-  
-        console.log(`Course deleted successfully: ${courseId}`);
-      });
-    })}
-    */
 
     static buyCourse(courseId) {
         pool.getConnection((err, connection) => {
