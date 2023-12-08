@@ -5,6 +5,8 @@ const AnswersDecorator = require('../decorators/AnswersDecorator')
 
 const FactoryDiscount = require('../factories/FactoryDiscount')
 
+const CourseBuilder = require('../builder/CourseBuilder')
+
 class CourseStudentModel {
   constructor(courseStudentIsExtraHelp,courseStudentIsTranscript,courseStudentIsAnswers,courseStudentStudentID,coursestudent_courseID) {
     this.courseStudentId = courseStudentId;
@@ -33,19 +35,36 @@ class CourseStudentModel {
 
       // Structural Design Patterns --->decorator Pattern
       const TranscriptDecoratoredCourse = new TranscriptDecorator(result[0], courseStudentIsTranscript);
-      console.log("+++++++ TranscriptDecoratoredCourse ++++++",TranscriptDecoratoredCourse)
-      //const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
-      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",TranscriptDecoratoredCourse)
+      //console.log("+++++++ TranscriptDecoratoredCourse ++++++",TranscriptDecoratoredCourse)
+      const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
+      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",transcriptAddedPrice)
 
       const extraHelpDecoratoredCourse = new ExtraHelpDecorator(TranscriptDecoratoredCourse, courseStudentIsExtraHelp);
       console.log("+++++++ extraHelpDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
-      //const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
+      const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
       //console.log("+++++++ extraHelpDecoratoredCourse extraHelpAddedPrice ++++++",extraHelpAddedPrice)
 
       const AnswersDecoratoredCourse = new AnswersDecorator(extraHelpDecoratoredCourse, courseStudentIsAnswers);
       console.log("+++++++ AnswersDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
       const asnwersAddedPrice = AnswersDecoratoredCourse.getPrice();
-      console.log("+++++++ AnswersDecoratoredCourse finalPrice ++++++",asnwersAddedPrice)
+      console.log("+++++++ AnswersDecoratoredCourse finalPrice --------------------++++++",asnwersAddedPrice)
+
+
+      // builder pattern
+      /*
+      const courseBuilder = new CourseBuilder();
+      const course = courseBuilder.withCourseName(AnswersDecoratoredCourse.courseName)
+      courseBuilder.withCourseTeacherId(AnswersDecoratoredCourse.courseTeacherId)
+      courseBuilder.withCoursePrice(AnswersDecoratoredCourse.coursePrice)
+      courseBuilder.withCourseDescription(AnswersDecoratoredCourse.courseDescription)
+      courseBuilder.withCourseAnswer(AnswersDecoratoredCourse.courseAnswer)
+      courseBuilder.withCourseTranscript(AnswersDecoratoredCourse.courseTranscript)
+      courseBuilder.withCourseStartDate(AnswersDecoratoredCourse.courseStartDate)
+      courseBuilder.withCourseEndDate(AnswersDecoratoredCourse.courseEndDate)
+      courseBuilder.build();
+
+      console.log("+++++++ course --------------------++++++",course)
+      */
       
       // creational design pattern ---> Factory Method 
       /*
