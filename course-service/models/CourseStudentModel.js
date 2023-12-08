@@ -3,8 +3,9 @@ const ExtraHelpDecorator = require('../decorators/ExtraHelpDecorator')
 const TranscriptDecorator = require('../decorators/TranscriptDecorator')
 const AnswersDecorator = require('../decorators/AnswersDecorator')
 
-const NormalDiscountFactory = require('../factories/NormalDiscountFactory')
-const FestivalSaleDiscountFactory = require('../factories/FestivalSaleDiscountFactory')
+const FactoryDiscount = require('../factories/FactoryDiscount')
+
+const CourseBuilder = require('../builder/CourseBuilder')
 
 class CourseStudentModel {
   constructor(courseStudentIsExtraHelp,courseStudentIsTranscript,courseStudentIsAnswers,courseStudentStudentID,coursestudent_courseID) {
@@ -14,7 +15,6 @@ class CourseStudentModel {
     this.courseStudentIsAnswers = courseStudentIsAnswers;
     this.courseStudentStudentID = courseStudentStudentID;
     this.coursestudent_courseID = coursestudent_courseID;
-
 
   }
 
@@ -33,24 +33,41 @@ class CourseStudentModel {
 
       console.log("+++++++ result ++++++",result)
 
-      // decorator Pattern
+      // Structural Design Patterns --->decorator Pattern
       const TranscriptDecoratoredCourse = new TranscriptDecorator(result[0], courseStudentIsTranscript);
-      console.log("+++++++ TranscriptDecoratoredCourse ++++++",TranscriptDecoratoredCourse)
-      //const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
-      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",TranscriptDecoratoredCourse)
+      //console.log("+++++++ TranscriptDecoratoredCourse ++++++",TranscriptDecoratoredCourse)
+      const transcriptAddedPrice = TranscriptDecoratoredCourse.getPrice();
+      console.log("+++++++ TranscriptDecoratoredCourse finalPrice ++++++",transcriptAddedPrice)
 
       const extraHelpDecoratoredCourse = new ExtraHelpDecorator(TranscriptDecoratoredCourse, courseStudentIsExtraHelp);
       console.log("+++++++ extraHelpDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
-      //const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
-      console.log("+++++++ extraHelpDecoratoredCourse extraHelpAddedPrice ++++++",extraHelpAddedPrice)
+      const extraHelpAddedPrice = extraHelpDecoratoredCourse.getPrice();
+      //console.log("+++++++ extraHelpDecoratoredCourse extraHelpAddedPrice ++++++",extraHelpAddedPrice)
 
       const AnswersDecoratoredCourse = new AnswersDecorator(extraHelpDecoratoredCourse, courseStudentIsAnswers);
       console.log("+++++++ AnswersDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
       const asnwersAddedPrice = AnswersDecoratoredCourse.getPrice();
-      console.log("+++++++ AnswersDecoratoredCourse finalPrice ++++++",asnwersAddedPrice)
+      console.log("+++++++ AnswersDecoratoredCourse finalPrice --------------------++++++",asnwersAddedPrice)
 
+
+      // builder pattern
+      /*
+      const courseBuilder = new CourseBuilder();
+      const course = courseBuilder.withCourseName(AnswersDecoratoredCourse.courseName)
+      courseBuilder.withCourseTeacherId(AnswersDecoratoredCourse.courseTeacherId)
+      courseBuilder.withCoursePrice(AnswersDecoratoredCourse.coursePrice)
+      courseBuilder.withCourseDescription(AnswersDecoratoredCourse.courseDescription)
+      courseBuilder.withCourseAnswer(AnswersDecoratoredCourse.courseAnswer)
+      courseBuilder.withCourseTranscript(AnswersDecoratoredCourse.courseTranscript)
+      courseBuilder.withCourseStartDate(AnswersDecoratoredCourse.courseStartDate)
+      courseBuilder.withCourseEndDate(AnswersDecoratoredCourse.courseEndDate)
+      courseBuilder.build();
+
+      console.log("+++++++ course --------------------++++++",course)
+      */
       
-      
+      // creational design pattern ---> Factory Method 
+      /*
       const festivalDiscountFactory = new FestivalSaleDiscountFactory();
       const festivalDiscount = festivalDiscountFactory.applyDiscount()
       console.log("+++++++  festivalDiscount ++++++",festivalDiscount)
@@ -66,12 +83,18 @@ class CourseStudentModel {
       {
         const finalDiscountByFactory = festivalDiscount
       }
+      */
       
     // subcription discount
+    // behavioral design pattern ---> State Pattern 
 
+      const factoryDiscount = new FactoryDiscount()
+      const discountType = "Festival"
+      const factoryDiscountPercentage = factoryDiscount.createDiscount(discountType)
+      console.log("+++++++ factoryDiscountPercentage  ++++++",factoryDiscountPercentage)
 
     // create request
-
+    /*
     pool.getConnection(async (err, connection) => {
         if(err) throw err
         console.log('connected as id ' + connection.threadId)
@@ -93,13 +116,14 @@ class CourseStudentModel {
            })
 
 
+           // behavioral design pattern ---> Observer Pattern
+           // Email serveice
 
 
 
 
 
 
-/*
       const extraHelpDecoratoredCourse = new ExtraHelpDecorator(TranscriptDecoratoredCourse, courseStudentIsTranscript);
       console.log("+++++++ TranscriptDecoratoredCourse ++++++",extraHelpDecoratoredCourse)
       const finalPrice = extraHelpDecoratoredCourse.getPrice();
