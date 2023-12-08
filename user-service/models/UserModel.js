@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const pool = require('../services/DatabaseConnection')
+const emailNotifier = require('../Observer/EmailNotifier');
 
 class User {
     constructor(username, password) {
@@ -10,6 +11,7 @@ class User {
     async register(req, res) {
       pool.getConnection(async (err, connection) => {
         if (err) {
+          emailNotifier.setState('failure');
           // Send error response to the caller
           return res.status(500).json({ error: 'Failed to obtain a database connection' });
         }
@@ -30,11 +32,12 @@ class User {
         connection.query('INSERT INTO user_details SET ?', params, (err, rows) => {
           connection.release(); // return the connection to pool
           if (err) {
-            console.log(err);
-            // Send error response to the caller
+            emailNotifier.setState('failure');
             return res.status(500).json({ error: 'Error registering user' });
           }
-  
+            // Send success response to the caller
+                 //registration succeeds, send a welcome email
+                 emailNotifier.setState('success');
           // Send success response to the caller
           res.status(200).json({ message: `Registration Successful.` });
         });
@@ -47,7 +50,7 @@ class User {
       try {
         pool.getConnection((err, connection) => {
           if (err) {
-            // Send error response to the caller
+            emailNotifier.setState('failure');
             return res.status(500).json({ error: 'Failed to obtain a database connection' });
           }
   
@@ -57,8 +60,8 @@ class User {
             async (err, rows) => {
               connection.release(); // return the connection to pool
               if (err) {
-                console.error(err);
                 // Send error response to the caller
+                emailNotifier.setState('failure');
                 return res.status(500).json({ error: 'Error querying user from the database' });
               }
   
@@ -70,13 +73,17 @@ class User {
   
                 if (passwordMatch) {
                   // Passwords match, send success response
+                  emailNotifier.setState('success');
                   res.status(200).json({ message: 'Login successful.' });
                 } else {
                   // Passwords do not match, send error response
+                  emailNotifier.setState('failure');
                   res.status(401).json({ error: 'Invalid username or password.' });
                 }
               } else {
                 // User not found, send error response
+                emailNotifier.setState('failure');
+
                 res.status(401).json({ error: 'Invalid username or password.' });
               }
             }
