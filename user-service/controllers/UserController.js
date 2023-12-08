@@ -27,8 +27,7 @@ class UserController {
 
     user.register(req, res);
   }
-// dropping the singleton pattern for login since we want diffrent instances 
-// of different user types to passed in various functionalities
+
   static loginUser(req, res) {
     const { username, password, role } = req.body;
     let user;
