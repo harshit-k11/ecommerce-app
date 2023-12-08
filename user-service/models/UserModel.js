@@ -38,6 +38,11 @@ class User {
             // Send success response to the caller
                  //registration succeeds, send a welcome email
                  emailNotifier.setState('success');
+                  // Initialize an instance of EmailMessageHandler
+                  const emailHandler = new EmailMessageHandler(emailNotifier);
+                  // Send a welcome email using the EmailMessageHandler
+                  emailHandler.sendWelcomeEmail(req.body.email, 'Welcome to our platform!');
+
           // Send success response to the caller
           res.status(200).json({ message: `Registration Successful.` });
         });
