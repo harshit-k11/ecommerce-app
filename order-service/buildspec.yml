@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-      - cd user-service
+      - cd order-service
       - npm install
   build:
     commands:
@@ -18,9 +18,9 @@ artifacts:
 # Deploy to Lambda function
 deploy:
   provider: Lambda
-  function-name: curio-mind_user_dev
+  function-name: curio-mind_order_dev
   region: us-east-1
-  role: arn:aws:lambda:us-east-1:5761265890:function:curio-mind_dev
+  role: arn:aws:lambda:us-east-1:5765865890:function:curio-mind_dev
   runtime: nodejs16.x
   timeout: 30
   handler: user-service/lambda.handler
