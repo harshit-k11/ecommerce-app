@@ -1,3 +1,5 @@
+// creational design pattern ---> Factory Method 
+// 
 const Discount = require('../interfaces/DiscountRepository')
 
 
@@ -11,6 +13,8 @@ class FestivalSaleDiscountFactory extends Discount {
     applyDiscount() {
         if(this.statusFestivalSaleDiscountFactory){
             return this.discountPercentage;
+            //instace FestivalSaleDiscountFactory
+            //one
         }
         else{
             return 0;
