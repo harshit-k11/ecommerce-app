@@ -1,4 +1,4 @@
-const { SuccessEmailObserver, FailureEmailObserver} = require('./Observer');
+const { SuccessEmailObserver, FailureEmailObserver } = require("./Observer");
 // Subject
 class EmailNotifier {
   constructor() {
@@ -7,7 +7,7 @@ class EmailNotifier {
   }
 
   attach(observer) {
-    this.observers.push(observer);
+    this.observers.push(observer)
   }
 
   setState(state) {
